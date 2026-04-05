@@ -29,3 +29,7 @@ dependencyResolutionManagement {
 }
 
 include(":composeApp")
+include(":core:domain")
+include(":core:data")
+include(":core:platform:auth")
+include(":core:platform:securestorage")
