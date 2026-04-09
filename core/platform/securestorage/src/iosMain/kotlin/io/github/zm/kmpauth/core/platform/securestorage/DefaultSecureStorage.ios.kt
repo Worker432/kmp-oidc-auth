@@ -2,7 +2,6 @@
 
 package io.github.zm.kmpauth.core.platform.securestorage
 
-import io.github.zm.kmpauth.core.domain.repository.SecureStorage
 import kotlinx.cinterop.ExperimentalForeignApi
 import kotlinx.cinterop.MemScope
 import kotlinx.cinterop.alloc

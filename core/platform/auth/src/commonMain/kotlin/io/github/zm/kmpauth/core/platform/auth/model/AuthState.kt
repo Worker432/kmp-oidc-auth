@@ -1,4 +1,4 @@
-package io.github.zm.kmpauth.core.domain.model
+package io.github.zm.kmpauth.core.platform.auth.model
 
 sealed class AuthState {
     data object Loading : AuthState()
@@ -6,4 +6,8 @@ sealed class AuthState {
     data object Unauthorized : AuthState()
 
     data object Authorized : AuthState()
+
+    data object ConfigInvalid: AuthState()
+
+    data object NeedRefresh: AuthState()
 }
