@@ -19,6 +19,7 @@ kotlin {
     sourceSets {
         androidMain.dependencies {
             implementation(libs.androidx.security.crypto)
+            implementation(libs.androidx.core.ktx)
         }
         commonMain.dependencies {
             implementation(libs.koin.core)
