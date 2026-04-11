@@ -1,7 +1,5 @@
 package io.github.zm.kmpauth.core.platform.auth.di
 
-import io.github.zm.kmpauth.core.platform.auth.AndroidAuthApi
-import io.github.zm.kmpauth.core.platform.auth.AuthApi
 import io.github.zm.kmpauth.core.platform.auth.driver.AuthDriver
 import io.github.zm.kmpauth.core.platform.auth.driver.DefaultAuthDriver
 import org.koin.android.ext.koin.androidContext
@@ -15,5 +13,4 @@ val androidCorePlatformAuthModule =
                 get(),
             )
         }
-        single<AuthApi> { AndroidAuthApi(androidContext(), get()) }
     }
