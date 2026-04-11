@@ -18,7 +18,16 @@ kotlin {
     iosSimulatorArm64()
 
     sourceSets {
+        androidMain.dependencies {
+            implementation(libs.koin.android)
+            implementation(libs.appauth.android)
+        }
         commonMain.dependencies {
+            implementation(libs.koin.core)
+            implementation(libs.kotlinx.coroutines.core)
+            implementation(project(":core:platform:securestorage"))
+        }
+        iosMain.dependencies {
         }
     }
 

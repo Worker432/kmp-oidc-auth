@@ -1,4 +1,4 @@
-package io.github.zm.kmpauth.core.domain.model
+package io.github.zm.kmpauth.core.platform.auth.model
 
 data class AuthTokens(
     val accessToken: String,

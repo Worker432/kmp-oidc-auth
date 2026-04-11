@@ -1,4 +1,4 @@
-package io.github.zm.kmpauth.core.domain.repository
+package io.github.zm.kmpauth.core.platform.securestorage
 
 interface SecureStorage {
     suspend fun putString(
