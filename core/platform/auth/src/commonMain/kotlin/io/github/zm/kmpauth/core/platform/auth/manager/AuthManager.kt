@@ -2,8 +2,8 @@ package io.github.zm.kmpauth.core.platform.auth.manager
 
 import io.github.zm.kmpauth.core.platform.auth.model.AuthFlowResult
 import io.github.zm.kmpauth.core.platform.auth.model.AuthState
+import io.github.zm.kmpauth.core.platform.auth.model.PlatformAuthIntent
 import io.github.zm.kmpauth.core.platform.auth.model.PlatformCallbackPayload
-import io.github.zm.kmpauth.core.platform.auth.model.PlatformLoginIntent
 import kotlinx.coroutines.flow.StateFlow
 
 interface AuthManager {
@@ -19,7 +19,7 @@ interface AuthManager {
 
     suspend fun refreshTokens(): Result<String>
 
-    suspend fun getEndSessionRequestIntent(): PlatformLoginIntent
+    suspend fun getEndSessionRequestIntent(): PlatformAuthIntent
 
     suspend fun completeLogout(payload: PlatformCallbackPayload): Result<Unit>
 }

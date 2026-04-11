@@ -2,7 +2,7 @@ package io.github.zm.kmpauth.core.platform.auth.model
 
 import android.content.Intent
 
-actual class PlatformLoginIntent internal constructor(
+actual class PlatformAuthIntent internal constructor(
     internal val intent: Intent,
 )
 

@@ -10,8 +10,8 @@ import io.github.zm.kmpauth.core.platform.auth.driver.AuthDriver
 import io.github.zm.kmpauth.core.platform.auth.model.AuthFlowResult
 import io.github.zm.kmpauth.core.platform.auth.model.AuthState
 import io.github.zm.kmpauth.core.platform.auth.model.OidcConfig
+import io.github.zm.kmpauth.core.platform.auth.model.PlatformAuthIntent
 import io.github.zm.kmpauth.core.platform.auth.model.PlatformCallbackPayload
-import io.github.zm.kmpauth.core.platform.auth.model.PlatformLoginIntent
 import io.github.zm.kmpauth.core.platform.auth.model.isValid
 import io.github.zm.kmpauth.core.platform.auth.tokenStore.TokenStore
 import kotlin.time.Clock
@@ -134,7 +134,7 @@ class AuthManagerImpl(
             .map { it.accessToken }
     }
 
-    override suspend fun getEndSessionRequestIntent(): PlatformLoginIntent {
+    override suspend fun getEndSessionRequestIntent(): PlatformAuthIntent {
         val idToken = tokenStore.loadIdToken()
             ?: throw RuntimeException("Не найден id токен")
 
