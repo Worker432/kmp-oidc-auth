@@ -2,7 +2,7 @@ package io.github.zm.kmpauth.core.platform.auth.model
 
 sealed class AuthFlowResult {
     data class Launch(
-        val intent: PlatformLoginIntent,
+        val intent: PlatformAuthIntent,
     ) : AuthFlowResult()
 
     data object AlreadyAuthorized : AuthFlowResult()

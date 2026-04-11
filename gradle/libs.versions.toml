@@ -17,6 +17,8 @@ jetbrainsKotlinJvm = "2.3.20"
 koin = "4.1.1"
 app-auth = "0.11.1"
 security-crypto = "1.1.0"
+kotlinx-coroutines = "1.10.2"
+
 
 
 [libraries]
@@ -42,6 +44,7 @@ koin-android = { module = "io.insert-koin:koin-android", version.ref = "koin" }
 koin-compose = { module = "io.insert-koin:koin-compose", version.ref = "koin" }
 appauth-android = { module = "net.openid:appauth", version.ref = "app-auth" }
 androidx-security-crypto = { module = "androidx.security:security-crypto", version.ref = "security-crypto" }
+kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

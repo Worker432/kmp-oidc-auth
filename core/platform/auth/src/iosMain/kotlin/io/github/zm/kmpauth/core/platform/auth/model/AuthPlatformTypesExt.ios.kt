@@ -4,9 +4,12 @@ package io.github.zm.kmpauth.core.platform.auth.model
 
 import cocoapods.AppAuth.OIDAuthorizationRequest
 import cocoapods.AppAuth.OIDAuthorizationResponse
+import cocoapods.AppAuth.OIDEndSessionRequest
 import kotlinx.cinterop.ExperimentalForeignApi
 
-fun PlatformLoginIntent.asIosAuthRequest(): OIDAuthorizationRequest = this.request
+fun PlatformAuthIntent.asIosAuthRequest(): OIDAuthorizationRequest? = this.authorizationRequest
+
+fun PlatformAuthIntent.asIosEndSessionRequest(): OIDEndSessionRequest? = this.endSessionRequest
 
 fun PlatformCallbackPayload.asIosAuthResponse(): OIDAuthorizationResponse? = this.response
 

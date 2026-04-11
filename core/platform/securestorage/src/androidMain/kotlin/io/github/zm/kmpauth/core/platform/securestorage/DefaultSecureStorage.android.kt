@@ -4,7 +4,6 @@ import android.content.Context
 import androidx.core.content.edit
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKeys
-import io.github.zm.kmpauth.core.domain.repository.SecureStorage
 
 actual class DefaultSecureStorage(
     private val context: Context,
