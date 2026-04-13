@@ -85,7 +85,7 @@ class AuthManagerImpl(
         }
     }
 
-    override suspend fun completeLogin(payload: PlatformCallbackPayload) {
+    override suspend fun completeLogin(payload: PlatformCallbackPayload): Result<Unit> =
         driver
             .exchangeTokens(payload)
             .onSuccess { tokens ->
@@ -98,7 +98,6 @@ class AuthManagerImpl(
                 _authState.value =
                     if (isAccessTokenValid()) AuthState.Authorized else AuthState.Unauthorized
             }.map { }
-    }
 
     override suspend fun getAccessToken(): Result<String> {
         return if (isAccessTokenValid()) {
@@ -113,7 +112,7 @@ class AuthManagerImpl(
         val refreshToken = cachedRefreshToken ?: tokenStore.loadRefreshToken()
         if (refreshToken.isNullOrBlank()) {
             _authState.value = AuthState.Unauthorized
-            throw IllegalStateException("No refresh token")
+            return Result.failure(IllegalStateException("No refresh token"))
         }
 
         return driver.refreshTokens(refreshToken)
