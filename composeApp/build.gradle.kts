@@ -6,6 +6,7 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
+    alias(libs.plugins.cocoapods)
 }
 
 kotlin {
@@ -27,21 +28,33 @@ kotlin {
     
     sourceSets {
         androidMain.dependencies {
-            implementation(libs.compose.uiToolingPreview)
             implementation(libs.androidx.activity.compose)
+            implementation(libs.koin.android)
         }
         commonMain.dependencies {
-            implementation(libs.compose.runtime)
             implementation(libs.compose.foundation)
             implementation(libs.compose.material3)
-            implementation(libs.compose.ui)
-            implementation(libs.compose.components.resources)
-            implementation(libs.compose.uiToolingPreview)
-            implementation(libs.androidx.lifecycle.viewmodelCompose)
-            implementation(libs.androidx.lifecycle.runtimeCompose)
+            implementation(libs.koin.core)
+
+            implementation(project(":core:platform:auth"))
+            implementation(project(":core:platform:securestorage"))
         }
-        commonTest.dependencies {
-            implementation(libs.kotlin.test)
+    }
+
+    cocoapods {
+        summary = "compose App module"
+        homepage = "https://ComposeApp"
+        ios.deploymentTarget = "15.0"
+        name = "ComposeApp"
+        version = "1.0.0"
+
+        framework {
+            baseName = "ComposeApp"
+            isStatic = true
+        }
+
+        pod("AppAuth") {
+            version = "~> 2.0.0"
         }
     }
 }
@@ -50,12 +63,15 @@ android {
     namespace = "io.github.zm.kmpauth"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
 
+
     defaultConfig {
         applicationId = "io.github.zm.kmpauth"
         minSdk = libs.versions.android.minSdk.get().toInt()
         targetSdk = libs.versions.android.targetSdk.get().toInt()
         versionCode = 1
         versionName = "1.0"
+
+        manifestPlaceholders["appAuthRedirectScheme"] = "ru.umkey.umkey"
     }
     packaging {
         resources {
@@ -71,9 +87,5 @@ android {
         sourceCompatibility = JavaVersion.VERSION_21
         targetCompatibility = JavaVersion.VERSION_21
     }
-}
-
-dependencies {
-    debugImplementation(libs.compose.uiTooling)
 }
 

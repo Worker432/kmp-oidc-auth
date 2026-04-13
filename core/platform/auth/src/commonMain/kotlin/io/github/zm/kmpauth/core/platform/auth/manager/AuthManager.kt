@@ -13,7 +13,7 @@ interface AuthManager {
 
     suspend fun startLogin(): AuthFlowResult
 
-    suspend fun completeLogin(payload: PlatformCallbackPayload)
+    suspend fun completeLogin(payload: PlatformCallbackPayload): Result<Unit>
 
     suspend fun getAccessToken(): Result<String>
 

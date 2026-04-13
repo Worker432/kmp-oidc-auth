@@ -4,4 +4,3 @@ sealed class AuthStartLoginResult {
     data class Launch(val intent: PlatformAuthIntent) : AuthStartLoginResult()
     data object AlreadyAuthorized : AuthStartLoginResult()
 }
-
